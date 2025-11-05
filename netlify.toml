@@ -1,6 +1,7 @@
 [build]
   publish = "."
   command = "echo 'No build step required'"
+  ignore = "git diff --quiet HEAD^ HEAD -- backend/ .env"
 
 [[redirects]]
   from = "/api/*"
