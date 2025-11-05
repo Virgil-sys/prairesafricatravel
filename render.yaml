@@ -2,3 +2,4 @@ services:
   - type: web
     name: prairies-africa-frontend
     env: static
+    publishDir: .
