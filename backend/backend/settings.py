@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "True").lower() in {"1", "true", "yes"}
 
 import dj_database_url
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.herokuapp.com,.netlify.app,.railway.app').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.railway.app,.netlify.app').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
     "https://prairies-africa.netlify.app",
@@ -227,7 +227,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://prairiesafrica.com',
     'https://www.prairiesafrica.com',
     'https://prairies-africa.netlify.app',
-    'https://your-heroku-app.herokuapp.com',
 ]
 
 # Email configuration (Gmail/Workspace compatible)
