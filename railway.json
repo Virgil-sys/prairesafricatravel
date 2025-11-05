@@ -3,6 +3,8 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd backend && python manage.py migrate && gunicorn --bind 0.0.0.0:$PORT backend.wsgi:application"
+    "startCommand": "cd backend && python manage.py migrate && gunicorn --bind 0.0.0.0:$PORT backend.wsgi:application",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 300
   }
 }
