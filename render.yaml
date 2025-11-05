@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: prairies-africa-frontend
+    env: static
+    region: oregon
+    plan: free
+    staticSiteGenerator: none
+    buildCommand: echo "No build required for static site"
+    publishDir: ./
+    routes:
+      - type: redirect
+        source: /api/(.*)
+        destination: https://prairies-africa-backend.onrender.com/api/$1
+        status: 200
