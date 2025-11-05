@@ -32,10 +32,10 @@
 - [x] Fix Railway backend URL in settings.py and update CSRF_TRUSTED_ORIGINS
 - [x] Deploy frontend to Netlify
 - [x] Switch from Railway to Heroku for simpler Django deployment
-- [ ] Install Heroku CLI
+- [x] Install Heroku CLI
 - [ ] Create Heroku app
-- [ ] Create Procfile for Heroku
-- [ ] Update settings.py for Heroku environment
+- [x] Create Procfile for Heroku
+- [x] Update settings.py for Heroku environment
 - [ ] Set up Heroku environment variables
 - [ ] Deploy backend to Heroku
 - [ ] Update frontend API_BASE_URL to Heroku URL
