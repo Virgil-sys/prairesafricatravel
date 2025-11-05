@@ -1,4 +1,4 @@
-# Deploy Frontend and Backend to Netlify + Railway
+# Deploy Frontend to Netlify + Backend to Heroku
 
 ## Tasks
 - [x] Deploy backend to Render using existing render.yaml
@@ -22,18 +22,35 @@
 - [x] Commit changes to git
 - [x] Push code to GitHub
 - [x] Deploy backend to Railway (add DJANGO_SUPERUSER_PASSWORD env var)
+- [x] Fix Railway deployment Python path issue with nixpacks.toml
+- [x] Fix Railway start command to bind to 0.0.0.0:$PORT
+- [x] Add healthcheck configuration to railway.json
+- [x] Add collectstatic to Railway start command
+- [x] Move collectstatic to start command in nixpacks.toml
+- [x] Fix Railway start command path
+- [x] Fix pip command in nixpacks.toml to use python -m pip
+- [x] Fix Railway backend URL in settings.py and update CSRF_TRUSTED_ORIGINS
 - [x] Deploy frontend to Netlify
-- [x] Test the full deployment
-- [x] Access admin panel at: https://your-railway-url/admin/
-- [x] Frontend available at: https://prairesafricatravel.netlify.app/
+- [x] Switch from Railway to Heroku for simpler Django deployment
+- [ ] Install Heroku CLI
+- [ ] Create Heroku app
+- [ ] Create Procfile for Heroku
+- [ ] Update settings.py for Heroku environment
+- [ ] Set up Heroku environment variables
+- [ ] Deploy backend to Heroku
+- [ ] Update frontend API_BASE_URL to Heroku URL
+- [ ] Test the full deployment
+- [ ] Access admin panel at: https://your-heroku-app.herokuapp.com/admin/
+- [ ] Frontend available at: https://prairesafricatravel.netlify.app/
 
 ## Notes
-- Switched from Render to Netlify + Railway for easier deployment
+- Switched from Railway to Heroku for simpler Django deployment
+- Heroku is much more straightforward for Django apps with excellent documentation
 - Netlify handles static frontend with automatic deployments
-- Railway provides simple Django deployment with database
+- Heroku provides simple Django deployment with database
 - All configurations created and committed to GitHub
 - Ready for deployment to both platforms
-- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL
+- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL (will update to Heroku)
 - Fixed Django settings.py indentation issue
 - Created admin user for backend
 - Database migrations applied
