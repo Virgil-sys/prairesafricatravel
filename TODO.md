@@ -14,6 +14,7 @@
 - [x] Add ignore rule to prevent Netlify rebuilds on backend changes
 - [x] Remove old Vercel and Render config files to avoid confusion
 - [x] Deploy frontend to Netlify (connect to GitHub repo)
+- [x] Update all HTML files with Railway backend URL
 - [ ] Deploy backend to Railway
 - [ ] Test the full deployment
 
@@ -23,3 +24,4 @@
 - Railway provides simple Django deployment with database
 - All configurations created and committed to GitHub
 - Ready for deployment to both platforms
+- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL

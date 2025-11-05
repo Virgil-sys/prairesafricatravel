@@ -285,7 +285,7 @@
       showMessage('Uploading your proof...', 'info');
 
       try {
-        const response = await fetch(`/api/payments/upload-proof/`, {
+        const response = await fetch(`https://prairies-backend-production.up.railway.app/api/payments/upload-proof/`, {
           method: 'POST',
           body: formData
         });
