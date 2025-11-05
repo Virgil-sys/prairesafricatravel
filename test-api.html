@@ -76,7 +76,7 @@
       el.textContent = '⏳ Creating booking...';
       
       try {
-        const response = await fetch(`${API_BASE}/api/bookings/create/`, {
+        const response = await fetch(`/api/bookings/create/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -113,7 +113,7 @@
       el.textContent = '⏳ Getting bank details...';
       
       try {
-        const response = await fetch(`${API_BASE}/api/payments/bank-details/`, {
+        const response = await fetch(`/api/payments/bank-details/`, {
           method: 'POST'
         });
 
@@ -134,7 +134,7 @@
       el.textContent = '⏳ Checking payment status...';
       
       try {
-        const response = await fetch(`${API_BASE}/api/payments/payment-status/${bookingId}/`);
+        const response = await fetch(`/api/payments/payment-status/${bookingId}/`);
         const data = await response.json();
         
         if (response.ok) {
@@ -153,7 +153,7 @@
       el.textContent = '⏳ Getting booking details...';
       
       try {
-        const response = await fetch(`${API_BASE}/api/bookings/${bookingId}/`);
+        const response = await fetch(`/api/bookings/${bookingId}/`);
         const data = await response.json();
         
         if (response.ok) {
