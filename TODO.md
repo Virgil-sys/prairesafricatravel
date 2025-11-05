@@ -40,10 +40,10 @@
 - [x] Recreate Procfile and runtime.txt for Render deployment
 - [x] Update settings.py for Render domains (.onrender.com)
 - [ ] Set Render environment variables in dashboard:
-  - SECRET_KEY: Generate a secure key (e.g., python -c "import secrets; print(secrets.token_urlsafe(50))")
+  - SECRET_KEY: ohCazGXDUV_lFOioR4VLZcjqJwyRvj14NkFdFDqGGovecB1rwHVNJtmQTIamoBsDwWo
   - DEBUG: False
   - DATABASE_URL: Provided by Render (PostgreSQL)
-  - DJANGO_SUPERUSER_PASSWORD: Set for admin user creation
+  - DJANGO_SUPERUSER_PASSWORD: admin123
   - EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD (if email needed)
   - FRONTEND_URL: https://prairesafricatravel.netlify.app
 - [ ] Deploy backend to Render using existing render.yaml
