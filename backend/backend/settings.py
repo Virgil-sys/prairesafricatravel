@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "True").lower() in {"1", "true", "yes"}
 
 import dj_database_url
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.railway.app,.netlify.app').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.onrender.com,.netlify.app').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
     "https://prairies-africa.netlify.app",

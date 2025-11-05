@@ -1,4 +1,4 @@
-# Deploy Frontend to Netlify + Backend to Railway (Free Hosting)
+# Deploy Frontend to Netlify + Backend to Render (Free Hosting)
 
 ## Tasks
 - [x] Deploy backend to Render using existing render.yaml
@@ -35,40 +35,38 @@
 - [x] Switch back to Railway from Heroku (free hosting)
 - [x] Recreate railway.json and nixpacks.toml for Railway deployment
 - [x] Update settings.py for Railway domains (.railway.app)
-- [ ] Set Railway environment variables in dashboard:
+- [x] Switch to Render backend deployment (free hosting)
+- [x] Remove Railway config files (railway.json, nixpacks.toml)
+- [x] Recreate Procfile and runtime.txt for Render deployment
+- [x] Update settings.py for Render domains (.onrender.com)
+- [ ] Set Render environment variables in dashboard:
   - SECRET_KEY: Generate a secure key (e.g., python -c "import secrets; print(secrets.token_urlsafe(50))")
   - DEBUG: False
-  - DATABASE_URL: Provided by Railway (PostgreSQL)
+  - DATABASE_URL: Provided by Render (PostgreSQL)
   - DJANGO_SUPERUSER_PASSWORD: Set for admin user creation
   - EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD (if email needed)
   - FRONTEND_URL: https://prairesafricatravel.netlify.app
-- [ ] Make Railway project public in dashboard
-- [ ] Deploy and test Railway backend at: https://prairesafricatravel-production.up.railway.app
-- [ ] Update frontend API_BASE_URL if Railway URL changes
+- [ ] Deploy backend to Render using existing render.yaml
+- [ ] Update frontend API_BASE_URL to Render backend URL
 - [ ] Test the full deployment
-- [ ] Access admin panel at: https://prairesafricatravel-production.up.railway.app/admin/
+- [ ] Access admin panel at: https://your-render-app.onrender.com/admin/
 - [ ] Frontend available at: https://prairies-africa.netlify.app/
 
-## Railway Backend Deployment Checklist
-- [x] railway.json configured with Nixpacks builder and start command
-- [x] nixpacks.toml created for Railway deployment
+## Render Backend Deployment Checklist
+- [x] render.yaml configured for backend deployment
+- [x] Procfile created for Render deployment
+- [x] runtime.txt created for Python version
 - [x] requirements.txt includes all necessary packages (Django, DRF, gunicorn, dj-database-url, psycopg2-binary, whitenoise, etc.)
-- [x] settings.py ALLOWED_HOSTS includes .railway.app
-- [x] settings.py CSRF_TRUSTED_ORIGINS includes Railway URL
-- [x] Procfile removed (not needed for Railway)
-- [x] No runtime.txt needed (Railway uses Nixpacks)
+- [x] settings.py ALLOWED_HOSTS includes .onrender.com
+- [x] settings.py CSRF_TRUSTED_ORIGINS includes Render URL
+- [x] Railway config files removed
 
 ## Notes
-- Using Railway for backend deployment with Nixpacks (FREE hosting)
-- Railway provides simple Django deployment with database
+- Using Render for backend deployment (FREE hosting)
+- Render provides reliable Django deployment with database
 - Netlify handles static frontend with automatic deployments
-- All configurations created and committed to GitHub
-- Ready for deployment to both platforms
-- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL
-- Fixed Django settings.py indentation issue
-- Created admin user for backend
-- Database migrations applied
-- Static files collected for production
-- Railway uses Nixpacks for deployment, no runtime.txt needed
-- Procfile removed as it's for Heroku, not Railway
-- Switched back to Railway from Heroku due to cost concerns
+- All configurations updated and ready for Render deployment
+- Updated settings.py for Render domains
+- Created Procfile and runtime.txt for Render deployment
+- Railway config files removed
+- Switched to Render due to user preference
