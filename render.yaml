@@ -4,8 +4,8 @@ services:
     env: static
     region: oregon
     plan: free
-    staticSiteGenerator: none
     buildCommand: echo "No build required for static site"
+    staticSiteGenerator: none
     publishDir: ./
     routes:
       - type: redirect
