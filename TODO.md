@@ -1,4 +1,4 @@
-# Deploy Frontend to Netlify + Backend to Heroku
+# Deploy Frontend to Netlify + Backend to Railway
 
 ## Tasks
 - [x] Deploy backend to Render using existing render.yaml
@@ -31,27 +31,40 @@
 - [x] Fix pip command in nixpacks.toml to use python -m pip
 - [x] Fix Railway backend URL in settings.py and update CSRF_TRUSTED_ORIGINS
 - [x] Deploy frontend to Netlify
-- [x] Switch from Railway to Heroku for simpler Django deployment
-- [x] Install Heroku CLI
-- [ ] Create Heroku app
-- [x] Create Procfile for Heroku
-- [x] Update settings.py for Heroku environment
-- [ ] Set up Heroku environment variables
-- [ ] Deploy backend to Heroku
-- [ ] Update frontend API_BASE_URL to Heroku URL
+- [x] Remove Procfile (not needed for Railway)
+- [ ] Set Railway environment variables in dashboard:
+  - SECRET_KEY: Generate a secure key (e.g., python -c "import secrets; print(secrets.token_urlsafe(50))")
+  - DEBUG: False
+  - DATABASE_URL: Provided by Railway (PostgreSQL)
+  - DJANGO_SUPERUSER_PASSWORD: Set for admin user creation
+  - EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD (if email needed)
+  - FRONTEND_URL: https://prairesafricatravel.netlify.app
+- [ ] Make Railway project public in dashboard
+- [ ] Deploy and test Railway backend at: https://prairesafricatravel-production.up.railway.app
+- [ ] Update frontend API_BASE_URL if Railway URL changes
 - [ ] Test the full deployment
-- [ ] Access admin panel at: https://your-heroku-app.herokuapp.com/admin/
+- [ ] Access admin panel at: https://prairesafricatravel-production.up.railway.app/admin/
 - [ ] Frontend available at: https://prairesafricatravel.netlify.app/
 
+## Railway Backend Deployment Checklist
+- [x] railway.json configured with Nixpacks builder and start command
+- [x] nixpacks.toml created for Railway deployment
+- [x] requirements.txt includes all necessary packages (Django, DRF, gunicorn, dj-database-url, psycopg2-binary, whitenoise, etc.)
+- [x] settings.py ALLOWED_HOSTS includes .railway.app
+- [x] settings.py CSRF_TRUSTED_ORIGINS includes Railway URL
+- [x] Procfile removed (not needed for Railway)
+- [x] No runtime.txt needed (Railway uses Nixpacks)
+
 ## Notes
-- Switched from Railway to Heroku for simpler Django deployment
-- Heroku is much more straightforward for Django apps with excellent documentation
+- Using Railway for backend deployment with Nixpacks
+- Railway provides simple Django deployment with database
 - Netlify handles static frontend with automatic deployments
-- Heroku provides simple Django deployment with database
 - All configurations created and committed to GitHub
 - Ready for deployment to both platforms
-- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL (will update to Heroku)
+- Updated all HTML files (booking.html, booking-new.html, payment-status.html, upload-proof.html, test-api.html) with Railway backend URL
 - Fixed Django settings.py indentation issue
 - Created admin user for backend
 - Database migrations applied
 - Static files collected for production
+- Railway uses Nixpacks for deployment, no runtime.txt needed
+- Procfile removed as it's for Heroku, not Railway

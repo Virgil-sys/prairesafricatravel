@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "True").lower() in {"1", "true", "yes"}
 
 import dj_database_url
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.vercel.app,.onrender.com,.railway.app,.netlify.app,.herokuapp.com').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.vercel.app,.onrender.com,.railway.app,.netlify.app').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
     "https://prairesafricatravel-production.up.railway.app",
