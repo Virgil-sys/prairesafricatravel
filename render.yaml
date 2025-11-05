@@ -7,8 +7,3 @@ services:
     buildCommand: echo "No build required for static site"
     staticSiteGenerator: none
     publishDir: ./
-    routes:
-      - type: redirect
-        source: /api/(.*)
-        destination: https://prairies-africa-backend.onrender.com/api/$1
-        status: 200
