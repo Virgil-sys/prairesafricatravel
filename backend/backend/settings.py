@@ -206,11 +206,13 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
     CORS_ALLOW_CREDENTIALS = True
 else:
-    CORS_ALLOWED_ORIGINS = [
-        'https://prairiesafrica.com',
-        'https://www.prairiesafrica.com',
-        'http://localhost:3000',
-    ]
+CORS_ALLOWED_ORIGINS = [
+    'https://prairiesafrica.com',
+    'https://www.prairiesafrica.com',
+    'https://prairies-africa-frontend.onrender.com',
+    'https://www.prairies-africa-frontend.onrender.com',
+    'http://localhost:3000',
+]
     
     FRONTEND_URL = os.getenv('FRONTEND_URL')
     if FRONTEND_URL and FRONTEND_URL not in CORS_ALLOWED_ORIGINS:
