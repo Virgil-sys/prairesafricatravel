@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: prairies-africa-backend
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: python manage.py migrate && gunicorn backend.wsgi --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        value: ohCazGXDUV_lFOioR4VLZcjqJwyRvj14NkFdFDqGGovecB1rwHVNJtmQTIamoBsDwWo
+      - key: DEBUG
+        value: False
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: admin123
+      - key: FRONTEND_URL
+        value: https://prairesafricatravel.netlify.app
