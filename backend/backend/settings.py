@@ -24,10 +24,9 @@ DEBUG = os.getenv("DEBUG", "True").lower() in {"1", "true", "yes"}
 
 import dj_database_url
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.vercel.app,.onrender.com,.railway.app,.netlify.app').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,.herokuapp.com,.netlify.app').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://prairesafricatravel-production.up.railway.app",
     "https://prairies-africa.netlify.app",
 ]
 
@@ -227,7 +226,6 @@ else:
 CSRF_TRUSTED_ORIGINS = [
     'https://prairiesafrica.com',
     'https://www.prairiesafrica.com',
-    'https://prairesafricatravel-production.up.railway.app',
     'https://prairies-africa.netlify.app',
 ]
 
