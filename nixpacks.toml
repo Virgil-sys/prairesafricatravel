@@ -6,10 +6,5 @@ cmds = [
   'pip install -r backend/requirements.txt'
 ]
 
-[phases.build]
-cmds = [
-  'cd backend && python manage.py collectstatic --noinput'
-]
-
 [start]
-cmd = 'cd backend && python manage.py migrate && gunicorn backend.wsgi --chdir backend --bind 0.0.0.0:$PORT'
+cmd = 'cd backend && python manage.py collectstatic --noinput && python manage.py migrate && gunicorn backend.wsgi --chdir backend --bind 0.0.0.0:$PORT'
