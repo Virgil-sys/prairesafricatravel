@@ -5,4 +5,4 @@ services:
     region: oregon
     plan: free
     buildCommand: echo "No build required for static site"
-    publishDir: ./
+    rootDir: ./
