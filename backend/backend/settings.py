@@ -206,7 +206,7 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
     CORS_ALLOW_CREDENTIALS = True
 else:
-CORS_ALLOWED_ORIGINS = [
+    CORS_ALLOWED_ORIGINS = [
     'https://prairiesafrica.com',
     'https://www.prairiesafrica.com',
     'https://prairies-africa-frontend.onrender.com',
