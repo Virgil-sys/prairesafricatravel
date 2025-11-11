@@ -249,6 +249,13 @@
                     title: 'Completed',
                     message: 'This booking has been completed. We hope you enjoyed your experience!',
                     pulse: false
+                },
+                'awaiting_confirmation': {
+                    color: 'bg-gradient-to-r from-yellow-500 to-amber-600',
+                    icon: 'fa-clock',
+                    title: 'Awaiting Confirmation',
+                    message: 'Backend server is currently unreachable. We are awaiting confirmation from our systems.',
+                    pulse: true
                 }
             };
 
@@ -279,17 +286,27 @@
 
             try {
                 const response = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}/`);
-                
+
                 if (!response.ok) {
+                    if (response.status >= 500 || response.status === 0) {
+                        // Server unreachable, show awaiting confirmation
+                        displayAwaitingConfirmation();
+                        return;
+                    }
                     throw new Error('Booking not found');
                 }
 
                 const booking = await response.json();
                 displayBookingDetails(booking);
-                
+
             } catch (error) {
                 console.error('Error loading booking:', error);
-                showError('Could not load booking details. Please try again or contact support.');
+                if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    // Network error, server unreachable
+                    displayAwaitingConfirmation();
+                } else {
+                    showError('Could not load booking details. Please try again or contact support.');
+                }
             }
         }
 
@@ -308,10 +325,10 @@
             document.getElementById('num-people').textContent = booking.number_of_people;
             document.getElementById('pref-date').textContent = formatDate(booking.preferred_date);
             document.getElementById('total-amount').textContent = `$${booking.total_amount}`;
-            
+
             // Additional activity
             if (booking.additional_activity_title) {
-                document.getElementById('additional-activity').textContent = 
+                document.getElementById('additional-activity').textContent =
                     `${booking.additional_activity_title} ($${booking.additional_activity_price})`;
             }
 
@@ -325,6 +342,26 @@
                 paymentInstructions.classList.remove('hidden');
                 document.getElementById('ref-for-payment').textContent = booking.reference_number;
             }
+
+            // Setup auto-refresh for pending status
+            setupAutoRefresh(booking.status);
+        }
+
+        // Function to display awaiting confirmation state
+        function displayAwaitingConfirmation() {
+            // Hide loading, show details
+            loadingState.classList.add('hidden');
+            bookingDetails.classList.remove('hidden');
+
+            // Render awaiting confirmation banner
+            renderStatusBanner('awaiting_confirmation');
+
+            // Hide booking details and customer info, show minimal info
+            document.querySelectorAll('#booking-details > .bg-white').forEach(el => el.style.display = 'none');
+            paymentInstructions.style.display = 'none';
+
+            // Setup auto-refresh to keep checking
+            setupAutoRefresh('awaiting_confirmation');
         }
 
         // Function to show error
@@ -342,14 +379,14 @@
             loadBookingDetails();
         });
 
-        // Auto-refresh every 30 seconds if pending
+        // Auto-refresh every 30 seconds if pending or awaiting confirmation
         let autoRefreshInterval;
         function setupAutoRefresh(status) {
             if (autoRefreshInterval) {
                 clearInterval(autoRefreshInterval);
             }
-            
-            if (status === 'pending') {
+
+            if (status === 'pending' || status === 'awaiting_confirmation') {
                 autoRefreshInterval = setInterval(() => {
                     console.log('Auto-refreshing booking status...');
                     loadBookingDetails();
