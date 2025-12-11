@@ -55,6 +55,24 @@
       <pre id="result-get" class="mt-4 bg-gray-50 p-4 rounded text-xs overflow-auto max-h-64"></pre>
     </div>
 
+    <!-- Test 5: Get Testimonials -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">💬 Test 5: Get Testimonials</h2>
+      <button onclick="testGetTestimonials()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+        Click to Get Testimonials
+      </button>
+      <pre id="result-testimonials" class="mt-4 bg-gray-50 p-4 rounded text-xs overflow-auto max-h-64"></pre>
+    </div>
+
+    <!-- Test 6: Create Testimonial -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">📝 Test 6: Create a Testimonial</h2>
+      <button onclick="testCreateTestimonial()" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
+        Click to Create Test Testimonial
+      </button>
+      <pre id="result-create-testimonial" class="mt-4 bg-gray-50 p-4 rounded text-xs overflow-auto max-h-64"></pre>
+    </div>
+
   </div>
 
   <script>
@@ -151,11 +169,11 @@
       const bookingId = document.getElementById('booking-id-2').value;
       const el = document.getElementById('result-get');
       el.textContent = '⏳ Getting booking details...';
-      
+
       try {
         const response = await fetch(`https://prairies-backend-production.up.railway.app/api/bookings/${bookingId}/`);
         const data = await response.json();
-        
+
         if (response.ok) {
           showResult('result-get', data);
         } else {
@@ -163,6 +181,52 @@
         }
       } catch (error) {
         showResult('result-get', { message: error.message, hint: 'Is the Django server running?' }, true);
+      }
+    }
+
+    async function testGetTestimonials() {
+      const el = document.getElementById('result-testimonials');
+      el.textContent = '⏳ Getting testimonials...';
+
+      try {
+        const response = await fetch(`https://prairies-backend-production.up.railway.app/api/testimonials/`);
+        const data = await response.json();
+
+        if (response.ok) {
+          showResult('result-testimonials', data);
+        } else {
+          showResult('result-testimonials', data, true);
+        }
+      } catch (error) {
+        showResult('result-testimonials', { message: error.message, hint: 'Is the Django server running?' }, true);
+      }
+    }
+
+    async function testCreateTestimonial() {
+      const el = document.getElementById('result-create-testimonial');
+      el.textContent = '⏳ Creating testimonial...';
+
+      try {
+        const response = await fetch(`https://prairies-backend-production.up.railway.app/api/testimonials/create/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Test User',
+            location: 'Test City, Country',
+            message: 'This is a test testimonial from the API test page. The testimonials feature is working great!',
+            rating: 5
+          })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          showResult('result-create-testimonial', data);
+          alert('✅ Testimonial created! It will need admin approval to appear publicly.');
+        } else {
+          showResult('result-create-testimonial', data, true);
+        }
+      } catch (error) {
+        showResult('result-create-testimonial', { message: error.message, hint: 'Is the Django server running?' }, true);
       }
     }
   </script>

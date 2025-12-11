@@ -5,10 +5,10 @@ from .models import Activity, BookingActivity
 
 @admin.register(Activity)
 class ActivityAdmin(admin.ModelAdmin):
-    list_display = ('activity_id', 'title', 'colored_category', 'price_display', 'is_active', 'display_order')
+    list_display = ('activity_id', 'title', 'colored_category', 'price', 'price_display', 'is_active', 'display_order')
     list_filter = ('category', 'is_active')
     search_fields = ('activity_id', 'title', 'description')
-    list_editable = ('is_active', 'display_order')
+    list_editable = ('price', 'is_active', 'display_order')
     ordering = ('category', 'display_order', 'title')
     
     fieldsets = (

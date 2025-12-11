@@ -8,7 +8,14 @@
     --gold: #d4af37;
 }
 
-body { font-family: 'Inter', sans-serif; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url('../images/falls-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
 h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
 html { scroll-behavior: smooth; }
 
@@ -33,7 +40,7 @@ a { transition: color 0.2s ease, background-color 0.2s ease; }
 }
 
 .activity-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.activity-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+
 
 .section-divider { height: 1px; background: linear-gradient(to right, transparent, #d1d5db, transparent); margin: 3rem 0; }
 

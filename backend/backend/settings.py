@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'bookings',
     'payments',
     'activities',
+    'testimonials',
 ]
 
 JAZZMIN_SETTINGS = {
